@@ -67,6 +67,11 @@ RUN pip install --no-cache-dir pytest pytest-cov coverage>=4.4 coverage>=4.4 cov
 # MorphCT 
 RUN pip install --no-cache-dir git+https://bitbucket.org@bitbucket.org/cmelab/morphct.git@dev
 
+# Rhaco
+RUN pip install --no-cache-dir git+https://bitbucket.org@bitbucket.org/cmelab/rhaco.git@dev
+
+# ORCA
+
 # mount points for filesystems on clusters
 RUN mkdir -p /nfs \
     mkdir -p /oasis \
