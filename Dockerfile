@@ -59,7 +59,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends git cmake && \
     make install
 
 # epoxpy
-RUN pip install --no-cache-dir git+https://bitbucket.org@bitbucket.org/cmelab/epoxpy.git@dev 
+RUN pip install --no-cache-dir git+https://bitbucket.org@bitbucket.org/cmelab/epoxpy.git@mbuild_update 
 
 # More things
 RUN pip install --no-cache-dir pytest pytest-cov coverage>=4.4 coverage>=4.4 coveralls PyYAML 
