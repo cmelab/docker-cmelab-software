@@ -71,7 +71,12 @@ RUN pip install --no-cache-dir git+https://bitbucket.org@bitbucket.org/cmelab/mo
 RUN pip install --no-cache-dir git+https://bitbucket.org@bitbucket.org/cmelab/rhaco.git@dev
 
 # ORCA
+ENV ORCA_DIR="/opt/orca"
+ENV PATH="$ORCA_DIR/bin:$PATH"
+ENV LD_LIBRARY_PATH="$ORCA_DIR/lib:$LD_LIBRARY_PATH"
 
+ADD orca /opt/orca
+RUN orca
 # mount points for filesystems on clusters
 RUN mkdir -p /nfs \
     mkdir -p /oasis \
