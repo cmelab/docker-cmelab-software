@@ -70,13 +70,6 @@ RUN pip install --no-cache-dir git+https://bitbucket.org@bitbucket.org/cmelab/mo
 # Rhaco
 RUN pip install --no-cache-dir git+https://bitbucket.org@bitbucket.org/cmelab/rhaco.git@dev
 
-# ORCA
-ENV ORCA_DIR="/opt/orca"
-ENV PATH="$ORCA_DIR/bin:$PATH"
-ENV LD_LIBRARY_PATH="$ORCA_DIR/lib:$LD_LIBRARY_PATH"
-
-ADD orca /opt/orca
-RUN orca
 # mount points for filesystems on clusters
 RUN mkdir -p /nfs \
     mkdir -p /oasis \
@@ -84,3 +77,16 @@ RUN mkdir -p /nfs \
     mkdir -p /work \
     mkdir -p /projects \
     mkdir -p /home1
+
+# ORCA
+ENV ORCA_DIR="/opt/orca"
+ENV PATH="$ORCA_DIR/bin:$PATH"
+ENV LD_LIBRARY_PATH="$ORCA_DIR/lib:$LD_LIBRARY_PATH"
+
+COPY orca /opt/orca
+
+RUN apt-get update --fix-missing && apt-get install -y --no-install-recommends \
+    imagemagick && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
